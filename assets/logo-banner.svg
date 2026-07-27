@@ -1,0 +1,7 @@
+<svg width="640" height="160" viewBox="0 0 640 160" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="mizara">
+  <rect width="640" height="160" rx="20" fill="#01030b"/>
+  <rect x="0.75" y="0.75" width="638.5" height="158.5" rx="19.25" fill="none" stroke="#ffffff1f" stroke-width="1.5"/>
+  <text x="320" y="102" text-anchor="middle" font-family="'SF Mono', 'Cascadia Code', 'JetBrains Mono', Consolas, ui-monospace, monospace" font-size="60" font-weight="700" letter-spacing="-1">
+    <tspan fill="#f2f2f2">mizara</tspan><tspan fill="#00c9de">()</tspan>
+  </text>
+</svg>

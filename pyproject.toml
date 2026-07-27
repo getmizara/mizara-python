@@ -1,0 +1,34 @@
+[build-system]
+requires = ["setuptools>=70", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "mizara"
+version = "1.0.0"
+description = "Mizara - programmable authorization layer for AI actions"
+license = "Apache-2.0"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = ["cryptography>=41"]
+keywords = ["ai-agents", "authorization", "policy-engine", "access-control", "llm", "agent-security"]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Topic :: Security",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+]
+
+[project.optional-dependencies]
+cedar = ["cedarpy>=4.8"]
+dev = ["pytest>=8"]
+
+[project.scripts]
+mizara = "mizara.cli:main"
+
+[project.urls]
+Repository = "https://github.com/getmizara/mizara-python"
+
+[tool.setuptools.packages.find]
+include = ["mizara*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

@@ -1,0 +1,14 @@
+{
+  "policy_id": "pol_payment_v1",
+  "client_id": "demo_customer",
+  "rules": [
+    {
+      "id": "rule_payment_limit",
+      "target_action": "approve_payment",
+      "condition": "resource.attributes.amount <= 5000.00",
+      "effect": "ALLOW",
+      "fallback_effect": "DENY",
+      "remediation_message": "Amount exceeds the autonomous approval limit. Escalate to a human approver."
+    }
+  ]
+}

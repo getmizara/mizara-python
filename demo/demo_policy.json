@@ -1,0 +1,22 @@
+{
+  "policy_id": "pol_demo_v1",
+  "client_id": "demo_customer",
+  "rules": [
+    {
+      "id": "rule_max_refund_limit",
+      "target_action": "execute_refund",
+      "condition": "resource.attributes.amount <= 50.00",
+      "effect": "ALLOW",
+      "fallback_effect": "DENY",
+      "remediation_message": "Refund amount exceeds the unapproved client threshold of $50.00."
+    },
+    {
+      "id": "rule_pii_redaction",
+      "target_action": "transmit_data",
+      "condition": "context.data_classification.contains('PII') && resource.attributes.authorized_endpoint == false",
+      "effect": "REDACT",
+      "fallback_effect": "ALLOW",
+      "remediation_message": "Sensitive personal health data must be masked before transport to unauthorized endpoints."
+    }
+  ]
+}
