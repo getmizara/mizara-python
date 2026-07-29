@@ -125,6 +125,21 @@ context.jurisdiction == 'EU' && context.data_classification.contains('PII')
 context.session_total + resource.attributes.amount <= 500
 ```
 
+## CLI
+
+```bash
+mizara validate policy.json   # checks structure and condition syntax
+mizara test policy.json       # checks coverage against 6 common risk scenarios
+mizara test policy.json --json
+```
+
+`mizara test` runs six single-call scenarios spanning infrastructure, external
+communication, and sensitive data through your actual policy and reports, per
+scenario, whether a rule you wrote explicitly catches it (`PROTECTED`),
+whether it's only blocked by the fail-closed default because nothing matched
+(`DEFAULT-DENIED`), or whether it would go through (`FAIL`). Exits non-zero if
+any scenario fails, so it drops into CI as-is.
+
 ## Integrations
 
 | Framework | Example |
