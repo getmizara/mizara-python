@@ -1,6 +1,8 @@
 <p align="center">
-  <img src="assets/logo-banner.svg" width="340" alt="mizara">
+  <a href="https://mizara.ai"><img src="assets/logo-banner.svg" width="340" alt="mizara"></a>
 </p>
+
+<p align="center"><a href="https://mizara.ai">mizara.ai</a></p>
 
 <p align="center">
   <a href="https://github.com/getmizara/mizara-python/actions/workflows/ci.yml"><img src="https://github.com/getmizara/mizara-python/actions/workflows/ci.yml/badge.svg" alt="CI"></a>
