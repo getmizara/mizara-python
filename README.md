@@ -8,6 +8,7 @@
   <a href="https://github.com/getmizara/mizara-python/actions/workflows/ci.yml"><img src="https://github.com/getmizara/mizara-python/actions/workflows/ci.yml/badge.svg" alt="CI"></a>
   <a href="https://pypi.org/project/mizara/"><img src="https://img.shields.io/pypi/v/mizara?color=3776ab" alt="PyPI"></a>
   <a href="https://pypi.org/project/mizara/"><img src="https://img.shields.io/pypi/pyversions/mizara" alt="Python"></a>
+  <a href="https://github.com/getmizara/mizara-python/commits/main"><img src="https://img.shields.io/github/last-commit/getmizara/mizara-python" alt="Last commit"></a>
   <a href="LICENSE.md"><img src="https://img.shields.io/badge/license-Apache%202.0-blue" alt="License"></a>
 </p>
 
