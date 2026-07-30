@@ -1,9 +1,9 @@
 """
 Mizara + OpenAI Agents SDK demo
 
-Runs two scenarios showing the authorization gate:
-  Scenario A: $1,200 payment  → ALLOW  → executes
-  Scenario B: $25,000 payment → DENY   → blocked
+Runs two scenarios showing the enforced guardrail:
+  Scenario A: 200 recipients, internal    → ALLOW    → sends
+  Scenario B: 50,000 recipients, external → RE_ROUTE  → blocked before it runs
 
 Requires: OPENAI_API_KEY environment variable
 Run:      python examples/openai-agents/demo.py
@@ -37,15 +37,15 @@ async def main() -> None:
         print("  export OPENAI_API_KEY=sk-...")
         sys.exit(1)
 
-    print("Mizara + OpenAI Agents SDK - Authorization Gate Demo\n")
+    print("Mizara + OpenAI Agents SDK - Enforced Guardrail Demo\n")
 
     await run_scenario(
-        "Scenario A - Approve $1,200 payment (under the limit)",
-        "Please approve a $1,200 payment for invoice INV-4471.",
+        "Scenario A - Broadcast to 200 internal recipients (under the threshold)",
+        "Send a broadcast to our 200 internal team members announcing the new release.",
     )
     await run_scenario(
-        "Scenario B - Approve $25,000 payment (over the limit)",
-        "Please approve a $25,000 payment for invoice INV-4472.",
+        "Scenario B - Broadcast to 50,000 external customers (over the threshold)",
+        "Send a broadcast to all 50,000 external customers announcing the new release.",
     )
 
 

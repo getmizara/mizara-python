@@ -148,6 +148,29 @@ any scenario fails, so it drops into CI as-is.
 | OpenAI Agents SDK | [`examples/openai-agents/`](examples/openai-agents/) |
 | Hosted API | [`examples/hosted-api/`](examples/hosted-api/) |
 
+### OpenAI Agents SDK
+
+```bash
+pip install "mizara[openai]"
+```
+
+```python
+from agents import function_tool
+from mizara import create_mizara_client
+from mizara.openai_agents import mizara_guardrail
+
+mizara = create_mizara_client(policy_path="./policy.json")
+
+@function_tool(tool_input_guardrails=[mizara_guardrail(mizara)])
+def delete_resource(resource_id: str) -> str:
+    ...
+```
+
+`mizara_guardrail()` runs as a `tool_input_guardrail` - a policy decision
+happens before the tool executes, and a non-`ALLOW` result blocks the call.
+Unlike exposing `authorize()` as a separate tool the model has to remember
+to call, this can't be skipped by the model just not calling it.
+
 ## Design choices
 
 **Fail closed.** No matching rule returns `DENY`, not `ALLOW`.

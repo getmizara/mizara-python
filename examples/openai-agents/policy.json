@@ -1,14 +1,14 @@
 {
-  "policy_id": "pol_payment_v1",
+  "policy_id": "pol_comms_v1",
   "client_id": "demo_customer",
   "rules": [
     {
-      "id": "rule_payment_limit",
-      "target_action": "approve_payment",
-      "condition": "resource.attributes.amount <= 5000.00",
-      "effect": "ALLOW",
-      "fallback_effect": "DENY",
-      "remediation_message": "Amount exceeds the autonomous approval limit. Escalate to a human approver."
+      "id": "rule_broadcast_review",
+      "target_action": "send_customer_broadcast",
+      "condition": "resource.attributes.recipient_count > 1000 && resource.attributes.external == true",
+      "effect": "RE_ROUTE",
+      "fallback_effect": "ALLOW",
+      "remediation_message": "Bulk external communication requires human review before sending."
     }
   ]
 }
