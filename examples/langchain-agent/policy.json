@@ -1,0 +1,14 @@
+{
+  "policy_id": "pol_sensitive_access_v1",
+  "client_id": "demo_customer",
+  "rules": [
+    {
+      "id": "rule_redact_output",
+      "target_action": "access_customer_record",
+      "condition": "resource.attributes.contains_phi == true",
+      "effect": "REDACT",
+      "fallback_effect": "ALLOW",
+      "remediation_message": "This record contains PHI and requires elevated access review before it can be returned."
+    }
+  ]
+}

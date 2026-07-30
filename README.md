@@ -144,9 +144,36 @@ any scenario fails, so it drops into CI as-is.
 
 | Framework | Example |
 | --- | --- |
-| LangGraph | [`examples/langgraph/`](examples/langgraph/) |
+| LangGraph (raw `StateGraph`) | [`examples/langgraph/`](examples/langgraph/) |
+| LangChain (`create_agent`) | [`examples/langchain-agent/`](examples/langchain-agent/) |
 | OpenAI Agents SDK | [`examples/openai-agents/`](examples/openai-agents/) |
 | Hosted API | [`examples/hosted-api/`](examples/hosted-api/) |
+
+### LangChain (`create_agent`)
+
+```bash
+pip install "mizara[langchain]"
+```
+
+```python
+from langchain.agents import create_agent
+from mizara import create_mizara_client
+from mizara.langchain import mizara_middleware
+
+mizara = create_mizara_client(policy_path="./policy.json")
+
+agent = create_agent(
+    model="gpt-4o-mini",
+    tools=[delete_resource],
+    middleware=[mizara_middleware(mizara)],
+)
+```
+
+`mizara_middleware()` runs as `wrap_tool_call` middleware - a policy decision
+happens before the tool executes, and a non-`ALLOW` result returns a rejection
+`ToolMessage` without ever calling the tool. For the lower-level raw
+`StateGraph` pattern (building the graph nodes yourself), see
+[`examples/langgraph/`](examples/langgraph/) instead.
 
 ### OpenAI Agents SDK
 
