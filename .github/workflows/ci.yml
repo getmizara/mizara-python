@@ -20,3 +20,11 @@ jobs:
           cache: pip
       - run: pip install -e ".[cedar,dev]"
       - run: pytest
+
+  safety-test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: getmizara/mizara-action@v1
+        with:
+          policy-path: examples/langgraph/policy.json
